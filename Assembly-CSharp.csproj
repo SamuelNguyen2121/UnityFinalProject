@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Movent_Player.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
   </ItemGroup>
   <ItemGroup>
