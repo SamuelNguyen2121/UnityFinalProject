@@ -38,8 +38,6 @@ public class Movent_Player : MonoBehaviour
     {
         Debug.Log(onGround);
 
-        Debug.DrawRay(transform.position,  -transform.up, Color.magenta);
-
         if (Input.GetKey(KeyCode.A))
         {
             controller.Move(-transform.right * movementSpeed * Time.deltaTime);
