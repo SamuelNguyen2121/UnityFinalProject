@@ -22,14 +22,21 @@ public class Movent_Player : MonoBehaviour
     private Camera characterCam;
     bool onGround = true;
 
+    [SerializeField]
+    float runFOV;
+
+    [SerializeField]
+    private float startFOV;
 
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
+        
         Debug.Log("Started");
+
+          characterCam.fieldOfView = startFOV;
         
 
     }
@@ -90,6 +97,7 @@ public class Movent_Player : MonoBehaviour
             if (onGround)//read the bool value from the rayCast
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityPull);
+                movementSpeed /= 1.5f;
 
             }
         }
@@ -97,50 +105,19 @@ public class Movent_Player : MonoBehaviour
 
     void Run()
     {
+        Debug.Log(startFOV);
         if (Input.GetKey(KeyCode.LeftShift))
         {
             movementSpeed = 7.5f;
             //smooth camera zoom out
-            characterCam.fieldOfView = Mathf.Lerp(characterCam.fieldOfView, 80,Time.deltaTime * 5f);
+            characterCam.fieldOfView = Mathf.Lerp(characterCam.fieldOfView, runFOV ,Time.deltaTime * 5f);
             
         }
         else
         {
             movementSpeed = 5;
             //smooth camera zoom back in 
-            characterCam.fieldOfView = Mathf.Lerp(characterCam.fieldOfView, 60, Time.deltaTime * 5f);
+            characterCam.fieldOfView = Mathf.Lerp(characterCam.fieldOfView, startFOV , Time.deltaTime * 5f);
         }
-       
-
     }
-
-    
-
-        /* void jump()
-         {
-
-             var ray = new Ray(transform.position, -transform.up);
-             RaycastHit hit;
-             if (Physics.Raycast(ray, out hit, 1.5f))
-             {
-                 onGround = true;
-                 *//*Debug.Log("on Ground" + onGround);*//*
-                 if (Input.GetKeyDown(KeyCode.Space))
-                 {
-                     velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravityPull);
-                     onGround = false;
-
-                 }
-             }
-             else
-             {
-                 onGround = false;
-                 *//*Debug.Log("In AIr" + onGround);*//*
-             }
-     *//*        else
-             {
-                 onGround = true;
-             }*//*
-
-         }*/
-    }
+}
