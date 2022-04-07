@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class PlayerShooter : MonoBehaviour
 {
     [SerializeField]
@@ -18,16 +20,23 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     float deathForce;
 
-/*    [SerializeField]
-    private CapsuleCollider enemyCapsuleCollider;*/
+    [SerializeField]
+    Text enemiesText;
+
+    [SerializeField]
+    Canvas levelPassed;
+
+    /*    [SerializeField]
+        private CapsuleCollider enemyCapsuleCollider;*/
 
     [SerializeField]
     private CharacterController characterController;
+    private int totalEnemies = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        enemiesText.text = "Total Enemies " + totalEnemies;
 
 
     }
@@ -58,12 +67,16 @@ public class PlayerShooter : MonoBehaviour
                 {
                     enemy.enemyDamage(damageAmount);
 
-                    if(enemy.health <= 0)
-                    {
+                    if(enemy.health == 0)
+                    { 
                         enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
-                        Destroy(hit.transform.gameObject, 3);
-                    }
+                        Destroy(hit.transform.gameObject, 2);
+                        totalEnemies--;
+                        enemiesText.text = "Total Enemies: " + totalEnemies;
+                        levelPassed.enabled = true;
 
+                        Time.timeScale = 0;
+                    }
                 }
             }
         }
