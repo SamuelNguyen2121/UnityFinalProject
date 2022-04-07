@@ -28,6 +28,8 @@ public class Movent_Player : MonoBehaviour
     [SerializeField]
     private float startFOV;
 
+    PlayerShooter shooter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,12 @@ public class Movent_Player : MonoBehaviour
           characterCam.fieldOfView = startFOV;
         
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        
+       
     }
 
     // Updat is called once per frame
@@ -74,6 +82,9 @@ public class Movent_Player : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
 
+       
+
+
 
     }
 
@@ -105,7 +116,7 @@ public class Movent_Player : MonoBehaviour
 
     void Run()
     {
-        Debug.Log(startFOV);
+        
         if (Input.GetKey(KeyCode.LeftShift))
         {
             movementSpeed = 7.5f;
@@ -120,4 +131,9 @@ public class Movent_Player : MonoBehaviour
             characterCam.fieldOfView = Mathf.Lerp(characterCam.fieldOfView, startFOV , Time.deltaTime * 5f);
         }
     }
+
+
+   
+
+    
 }

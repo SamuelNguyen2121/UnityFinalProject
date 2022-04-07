@@ -10,7 +10,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     float damageAmount;
 
-    [SerializeField]
+   
     private Damage enemy;
     
 
@@ -18,9 +18,17 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     float deathForce;
 
+/*    [SerializeField]
+    private CapsuleCollider enemyCapsuleCollider;*/
+
+    [SerializeField]
+    private CharacterController characterController;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+
 
     }
 
@@ -32,7 +40,7 @@ public class PlayerShooter : MonoBehaviour
         Shoot();
 
     }
-    private void Shoot()
+    public void Shoot()
     {
 
         if (Input.GetButtonDown("Fire1") /* || Input.GetButton("Fire1")*/)//Left mouse button
@@ -53,11 +61,16 @@ public class PlayerShooter : MonoBehaviour
                     if(enemy.health <= 0)
                     {
                         enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
+                        Destroy(hit.transform.gameObject, 3);
                     }
 
                 }
             }
         }
     }
+
+
+
+    
 
 }
