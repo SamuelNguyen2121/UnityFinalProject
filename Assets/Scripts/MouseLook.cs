@@ -9,7 +9,7 @@ public class MouseLook : MonoBehaviour
     private Transform transformBody;
 
     [SerializeField]
-    private float sensitivity;
+    public static float sensitivity = 200f;
 
     private float rotatXAxis = 0f;
 

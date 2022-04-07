@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BF3F2D37-4DBA-D7D1-B3DF-672BFD8A592F}</ProjectGuid>
+    <ProjectGuid>{5FE79EC4-F65D-FB20-1539-35F962CDF6C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,6 +57,8 @@
     <Compile Include="Assets\Scripts\PlayerShooter.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Movent_Player.cs" />
+    <Compile Include="Assets\Scripts\PauseScript.cs" />
+    <Compile Include="Assets\Scripts\SettingsScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
