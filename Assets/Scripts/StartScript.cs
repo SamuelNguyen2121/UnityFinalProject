@@ -21,4 +21,9 @@ public class StartScript : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
