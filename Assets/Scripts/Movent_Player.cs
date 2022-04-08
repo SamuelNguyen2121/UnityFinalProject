@@ -25,8 +25,7 @@ public class Movent_Player : MonoBehaviour
     [SerializeField]
     float runFOV;
 
-    [SerializeField]
-    private float startFOV;
+    public static float startFOV = 90f;
 
     PlayerShooter shooter;
 
