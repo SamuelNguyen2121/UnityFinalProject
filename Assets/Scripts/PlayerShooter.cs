@@ -31,7 +31,7 @@ public class PlayerShooter : MonoBehaviour
 
     [SerializeField]
     private CharacterController characterController;
-    private int totalEnemies = 38;
+    private int totalEnemies = 5; // <--- should be 38
 
     // Start is called before the first frame update
     void Start()

@@ -14,7 +14,10 @@ public class StartScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Application.Quit();
+        }
     }
 
     public void LoadNormal()
