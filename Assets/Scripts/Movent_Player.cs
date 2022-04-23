@@ -28,7 +28,7 @@ public class Movent_Player : MonoBehaviour
     public static float startFOV = 90f;
 
     PlayerShooter shooter;
-
+    private Transform initialTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class Movent_Player : MonoBehaviour
         Debug.Log("Started");
 
           characterCam.fieldOfView = startFOV;
-        
+        initialTransform = GetComponent<Transform>();
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -73,6 +73,15 @@ public class Movent_Player : MonoBehaviour
         {
             controller.Move(-transform.forward * movementSpeed * Time.deltaTime);
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+           transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
         Jump();
