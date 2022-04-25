@@ -20,9 +20,14 @@ public class StartScript : MonoBehaviour
         }
     }
 
-    public void LoadNormal()
+    public void LoadDay()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level 2(APT)");
+    }
+
+    public void LoadNight()
+    {
+        SceneManager.LoadScene("Level2(Night)");
     }
 
     public void QuitGame()
