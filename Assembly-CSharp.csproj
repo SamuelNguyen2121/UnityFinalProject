@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5FE79EC4-F65D-FB20-1539-35F962CDF6C8}</ProjectGuid>
+    <ProjectGuid>{E1456745-ED92-4EB6-8905-E64DC1E47277}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,10 +62,9 @@
     <Compile Include="Assets\Scripts\StartScript.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\Movent_Player.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
-    <None Include="Assets\StoneWalls\readme.txt" />
+    <Compile Include="Assets\Scripts\bulletCollision.cs" />
+    <Compile Include="Assets\Scripts\EnemyShooting.cs" />
+    <Compile Include="Assets\Scripts\playerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

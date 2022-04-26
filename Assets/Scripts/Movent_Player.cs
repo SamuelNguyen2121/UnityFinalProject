@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movent_Player : MonoBehaviour
 {
     CharacterController controller;
+    [SerializeField]
     Rigidbody rb;
    
 
@@ -51,10 +52,19 @@ public class Movent_Player : MonoBehaviour
     // Updat is called once per frame
     void Update()
     {
+        var inputX = Input.GetAxis("Horizontal");
+        var inputY = Input.GetAxis("Vertical");
+
+        transform.Translate(new Vector3(inputX, 0, inputY)  * Time.deltaTime * movementSpeed);
+        if(inputY > 0) 
+        {
+            Run();
+
+        } 
 
 
 
-        if (Input.GetKey(KeyCode.A))
+        /*if (Input.GetKey(KeyCode.A))
         {
             controller.Move(-transform.right * movementSpeed * Time.deltaTime);
 
@@ -82,12 +92,12 @@ public class Movent_Player : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-        }
+        }*/
 
         Jump();
 
-        velocity.y += gravityPull * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+      //  velocity.y += gravityPull * Time.deltaTime;
+       // controller.Move(velocity * Time.deltaTime);
 
 
        
@@ -107,7 +117,7 @@ public class Movent_Player : MonoBehaviour
         }
         else
         {
-            onGround = false;// Means it's in the air
+            onGround = false;// Character is in the air
 
         }
 
@@ -115,8 +125,11 @@ public class Movent_Player : MonoBehaviour
         {
             if (onGround)//read the bool value from the rayCast
             {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityPull);
-                movementSpeed /= 1.5f;
+                rb = GetComponent<Rigidbody>();
+                 rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+
+/*                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityPull);
+                movementSpeed /= 1.5f;*/
 
             }
         }
