@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movent_Player : MonoBehaviour
 {
-    CharacterController controller;
     [SerializeField]
     Rigidbody rb;
    
@@ -12,12 +11,9 @@ public class Movent_Player : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
 
-    private float diretion;
-
     [SerializeField]
     private float jumpHeight;
 
-    private float gravityPull = -9.81f;
     private Vector3 velocity;
     [SerializeField]
     private Camera characterCam;
@@ -28,25 +24,20 @@ public class Movent_Player : MonoBehaviour
 
     public static float startFOV = 90f;
 
+    [SerializeField]
+    private CapsuleCollider playerCollider;
+
     PlayerShooter shooter;
     private Transform initialTransform;
 
     // Start is called before the first frame update
     void Start()
-    {
-        controller = GetComponent<CharacterController>();
-        
+    {        
         Debug.Log("Started");
 
           characterCam.fieldOfView = startFOV;
         initialTransform = GetComponent<Transform>();
 
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        
-       
     }
 
     // Updat is called once per frame
@@ -62,6 +53,7 @@ public class Movent_Player : MonoBehaviour
 
         } 
 
+        Debug.DrawRay(playerCollider.transform.position, new Vector3(0f,-0.2f,0f),Color.yellow);
 
 
         /*if (Input.GetKey(KeyCode.A))
@@ -108,9 +100,9 @@ public class Movent_Player : MonoBehaviour
 
     private void Jump()
     {
-        var ray = new Ray(transform.position, Vector3.down); // shoots raycast down always 
+        var ray = new Ray(playerCollider.transform.position, Vector3.down); // shoots raycast down always 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1.5f)) // Check if ray cast hit an object. Distance of the ray cast down is 1.5 units
+        if (Physics.Raycast(ray, out hit, 2)) // Check if ray cast hit an object. Distance of the ray cast down is 1.5 units
         {
             onGround = true; //if the ray cast hit something than it is on the ground
 
@@ -123,7 +115,7 @@ public class Movent_Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (onGround)//read the bool value from the rayCast
+            if (onGround )//read the bool value from the rayCast
             {
                 rb = GetComponent<Rigidbody>();
                  rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
