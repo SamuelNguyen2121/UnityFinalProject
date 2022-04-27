@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class playerHealth : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class playerHealth : MonoBehaviour
                     Debug.Log("Dead");
                     Time.timeScale = 0;
                     healthOfPlayer.color = Color.red;
+                SceneManager.LoadScene("GameOverScene"); 
                 }
 
                 if (health == 25)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerShooter : MonoBehaviour
@@ -25,6 +25,13 @@ public class PlayerShooter : MonoBehaviour
 
     [SerializeField]
     Canvas levelPassed;
+
+    private Rigidbody hostageRB;
+
+    [SerializeField]
+    float hostageKillAmount;
+
+    
 
     /*    [SerializeField]
         private CapsuleCollider enemyCapsuleCollider;*/
@@ -62,6 +69,21 @@ public class PlayerShooter : MonoBehaviour
 
                 enemy = hit.transform.GetComponent<Damage>();
                 enemyRB = hit.transform.GetComponent<Rigidbody>();
+
+
+                if(hit.transform.tag == "Hostage")
+                {
+
+                    hostageRB = hit.transform.gameObject.GetComponent<Rigidbody>();
+                    hostageRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse);
+                    Debug.Log("hostage hit");
+                    hostageKillAmount -= 1;
+                    if(hostageKillAmount == 0)
+                    {
+                        SceneManager.LoadScene("GameOverScene");
+                    }
+
+                }
 
                 if (enemy != null)
                 {

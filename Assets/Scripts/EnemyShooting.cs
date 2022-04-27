@@ -32,7 +32,7 @@ public class EnemyShooting : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward * 100);
         RaycastHit hit;
-        if (Physics.SphereCast(ray, 0.5f, out hit))
+        if (Physics.SphereCast(ray, 1f, out hit))
         {
             if (hit.transform.tag == "Player")
             {
