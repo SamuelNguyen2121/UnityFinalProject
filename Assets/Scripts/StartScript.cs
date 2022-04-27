@@ -30,6 +30,11 @@ public class StartScript : MonoBehaviour
         SceneManager.LoadScene("Level2(Night)");
     }
 
+    public void LoadNightHard()
+    {
+        SceneManager.LoadScene("Level2(NightAndHard)");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

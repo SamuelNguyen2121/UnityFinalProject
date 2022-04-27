@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: b135ed22ccf8e96479c26ab8098d66df
+  - enabled: 1
+    path: Assets/Scenes/Level2(NightAndHard).unity
+    guid: e0ee0775fdcde0d4d87bbd5619d3b346
   m_configObjects: {}

@@ -69,6 +69,7 @@ public class PauseScript : MonoBehaviour
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        pauseMenuCanvas.enabled = false;
 
     }
 
