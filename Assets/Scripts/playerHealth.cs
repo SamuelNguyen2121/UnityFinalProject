@@ -18,35 +18,37 @@ public class playerHealth : MonoBehaviour
 
         healthOfPlayer.color = Color.green;
     }
+     
+    
     private void OnTriggerEnter(Collider other)
-    {
-        if(other.transform.gameObject.tag == "enemyBullet")
         {
-            health -= 25;
-            healthOfPlayer.text = health.ToString();
+            if (other.transform.gameObject.tag == "enemyBullet")
+            {
+                health -= 25;
+                healthOfPlayer.text = health.ToString();
 
-            if (health == 0)
-            {
-                Debug.Log("Dead");
-                Time.timeScale = 0;
-                healthOfPlayer.color = Color.red;
-            }
+                if (health == 0)
+                {
+                    Debug.Log("Dead");
+                    Time.timeScale = 0;
+                    healthOfPlayer.color = Color.red;
+                }
 
-            if(health == 25)
-            {
-               healthOfPlayer.color = Color.red;
+                if (health == 25)
+                {
+                    healthOfPlayer.color = Color.red;
+                }
+                else if (health == 50)
+                {
+                    healthOfPlayer.color = Color.yellow;
+                }
+                else
+                {
+                    healthOfPlayer.color = Color.green;
+                }
+                Destroy(other.gameObject);
             }
-            else if( health == 50)
-            {
-                healthOfPlayer.color = Color.yellow;
-            }
-            else
-            {
-                healthOfPlayer.color = Color.green;
-            }
-            Destroy(other.gameObject);
         }
-    }
 
     
 }
