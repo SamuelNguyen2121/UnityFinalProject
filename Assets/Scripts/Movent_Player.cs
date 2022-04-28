@@ -51,7 +51,8 @@ public class Movent_Player : MonoBehaviour
         {
             Run();
 
-        } 
+        }
+
 
         Debug.DrawRay(playerCollider.transform.position, new Vector3(0f,-0.2f,0f),Color.yellow);
 

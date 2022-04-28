@@ -90,14 +90,19 @@ public class PlayerShooter : MonoBehaviour
                     enemy.enemyDamage(damageAmount);
 
                     if(enemy.health == 0)
-                    { 
-                        enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
+                    {
+                        //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
+                        enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); 
+
+                        //Destroy the enemy after 2 seconds
                         Destroy(hit.transform.gameObject, 2);
                         totalEnemies--;
+
+                        //Update total enemies ttext in ui
                         enemiesText.text = "Total Enemies: " + totalEnemies;
+
                         if (totalEnemies == 0)
                         {
-
                             levelPassed.enabled = true;
                             Time.timeScale = 0;
                         }

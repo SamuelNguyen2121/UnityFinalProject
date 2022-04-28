@@ -4,48 +4,68 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
+    [SerializeField]
+    Transform target;
+    [SerializeField]
+    Rigidbody bullet;
+    [SerializeField]
+    Transform gun;
+    
+    [SerializeField]
+    float speed = 1.0f;
 
-
-    //[SerializeField]
-    //float bulletSpeed;
-
-    public Rigidbody bullet;
-    public Transform gun;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    float firerate;
+    float nextShoot;
     // Update is called once per frame
+    private void Start()
+    {
+        nextShoot = Time.time;
+
+        //Bullets shoot out every half a second 
+        firerate = 0.5f;
+    }
     void Update()
     {
         enemyShooting();
-        Debug.DrawRay(transform.position, transform.forward * 100, Color.yellow);
-
 
     }
 
     void enemyShooting()
     {
-        Ray ray = new Ray(transform.position, transform.forward * 100);
+        Debug.DrawRay(gun.position, transform.forward * 100, Color.yellow);
+        Ray ray = new Ray(gun.position, transform.forward * 100);
         RaycastHit hit;
-        if (Physics.SphereCast(ray, 1f, out hit))
+        if (Physics.SphereCast(ray, 5f, out hit))
         {
-            if (hit.transform.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
-                LaunchBullet();
+                Vector3 targetDirection = target.position - transform.position;
+
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection + new Vector3(0.3f,0,0), speed * Time.deltaTime, 0.0f);
+
+                // Draw a ray pointing at our player in
+                Debug.DrawRay(transform.position, newDirection * 100, Color.red);
+
+                transform.rotation = Quaternion.LookRotation(newDirection);
+
+                //FireRate Control
+                if (Time.time > nextShoot)
+                {
+                  
+                    LaunchBullet();
+                    nextShoot = Time.time + firerate;
+                }
             }
         }
 
         void LaunchBullet()
         {
             Rigidbody enemyBullet;
-            enemyBullet = Instantiate(bullet, gun.position, gun.rotation);
+            enemyBullet = Instantiate(bullet, gun.position,gun.rotation);
             enemyBullet.AddForce(gun.forward * 30, ForceMode.Impulse);
+
             Destroy(enemyBullet.gameObject, 1f);
+            
         }
     }
 }
