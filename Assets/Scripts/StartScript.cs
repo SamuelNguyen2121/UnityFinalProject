@@ -8,7 +8,8 @@ public class StartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -18,6 +19,11 @@ public class StartScript : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void LoadShootingRange()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void LoadDay()
