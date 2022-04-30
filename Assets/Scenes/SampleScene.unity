@@ -3912,6 +3912,7 @@ MonoBehaviour:
   deathForce: 4
   enemiesText: {fileID: 693151953}
   levelPassed: {fileID: 918995622}
+  hostageKillAmount: 0
   characterController: {fileID: 1319446274}
 --- !u!1 &454370398
 GameObject:
@@ -7060,7 +7061,7 @@ GameObject:
   - component: {fileID: 697391236}
   - component: {fileID: 697391235}
   m_Layer: 5
-  m_Name: LevelPassed
+  m_Name: TutorialCompletedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7083,7 +7084,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 571.6335, y: 379.2328}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697391235
 MonoBehaviour:
@@ -7118,7 +7119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level Passed
+  m_Text: Tutorial Completed
 --- !u!222 &697391236
 CanvasRenderer:
   m_ObjectHideFlags: 0
