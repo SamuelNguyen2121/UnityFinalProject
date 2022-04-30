@@ -25,7 +25,7 @@ public class Movent_Player : MonoBehaviour
     public static float startFOV = 90f;
 
     [SerializeField]
-    private CapsuleCollider playerCollider;
+    private Collider playerCollider;
 
     PlayerShooter shooter;
     private Transform initialTransform;
@@ -54,7 +54,7 @@ public class Movent_Player : MonoBehaviour
         }
 
 
-        Debug.DrawRay(playerCollider.transform.position, new Vector3(0f,-0.2f,0f),Color.yellow);
+        Debug.DrawRay(characterCam.transform.position, new Vector3(0f,-0.2f,0f),Color.yellow);
 
 
         /*if (Input.GetKey(KeyCode.A))

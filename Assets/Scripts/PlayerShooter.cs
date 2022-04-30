@@ -71,6 +71,7 @@ public class PlayerShooter : MonoBehaviour
                 enemyRB = hit.transform.GetComponent<Rigidbody>();
 
 
+
                 if(hit.transform.tag == "Hostage")
                 {
 
@@ -87,10 +88,13 @@ public class PlayerShooter : MonoBehaviour
 
                 if (enemy != null)
                 {
+
                     enemy.enemyDamage(damageAmount);
 
                     if(enemy.health == 0)
                     {
+                        enemyRB.isKinematic = false;
+
                         //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
                         enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); 
 
