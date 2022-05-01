@@ -30,14 +30,19 @@ public class PlayerShooter : MonoBehaviour
 
     [SerializeField]
     float hostageKillAmount;
+    private EnemyShooting enemyShooting;
 
-    
+    [SerializeField]
+    Transform muzzle;
+
+    [SerializeField]
+    GameObject muzzleFlash;
+
 
     /*    [SerializeField]
         private CapsuleCollider enemyCapsuleCollider;*/
 
-    [SerializeField]
-    private CharacterController characterController;
+
     private int totalEnemies = 38; // <--- should be 38
 
     // Start is called before the first frame update
@@ -58,10 +63,13 @@ public class PlayerShooter : MonoBehaviour
     }
     public void Shoot()
     {
+        GameObject playerMuzzle;
 
         if (Input.GetButtonDown("Fire1") /* || Input.GetButton("Fire1")*/)//Left mouse button
         {
             Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+            playerMuzzle = Instantiate(muzzleFlash,  muzzle.position, muzzle.rotation);
+            Destroy(playerMuzzle, 0.1f);
 
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f))
@@ -69,6 +77,7 @@ public class PlayerShooter : MonoBehaviour
 
                 enemy = hit.transform.GetComponent<Damage>();
                 enemyRB = hit.transform.GetComponent<Rigidbody>();
+                enemyShooting = hit.transform.GetComponent<EnemyShooting>();
 
 
 
@@ -94,6 +103,7 @@ public class PlayerShooter : MonoBehaviour
                     if(enemy.health == 0)
                     {
                         enemyRB.isKinematic = false;
+                        enemyShooting.enabled = false;
 
                         //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
                         enemyRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse); 
