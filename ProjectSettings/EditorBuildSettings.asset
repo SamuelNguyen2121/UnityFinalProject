@@ -12,17 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Level2(Night).unity
+    path: Assets/Scenes/Level2NightHard.unity
     guid: 9304b7ed2164a6140858a259e809cc21
   - enabled: 1
-    path: Assets/Scenes/Level 2(APT).unity
+    path: Assets/Scenes/Level 2Easy.unity
     guid: 9d842e6ad294b324fa0ad92ba6d175e3
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: b135ed22ccf8e96479c26ab8098d66df
   - enabled: 1
-    path: Assets/Scenes/Level2(NightAndHard).unity
+    path: Assets/Scenes/Level2NightEasy.unity
     guid: e0ee0775fdcde0d4d87bbd5619d3b346
+  - enabled: 1
+    path: Assets/Scenes/Level2DayHard.unity
+    guid: 3863d076d4b06ab45b044d2a8cd1a0d8
   - enabled: 1
     path: Assets/Scenes/MissionCompletedScene.unity
     guid: 37b4e041d7b60fa4c985737befbef1b1

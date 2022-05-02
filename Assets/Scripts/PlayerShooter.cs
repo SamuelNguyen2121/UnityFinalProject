@@ -43,7 +43,7 @@ public class PlayerShooter : MonoBehaviour
         private CapsuleCollider enemyCapsuleCollider;*/
 
 
-    private int totalEnemies = 38; // <--- should be 38
+    [SerializeField] int totalEnemies = 38; // <--- should be 38
 
     // Start is called before the first frame update
     void Start()
