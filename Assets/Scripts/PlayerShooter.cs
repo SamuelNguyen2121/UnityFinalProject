@@ -23,9 +23,6 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField]
     Text enemiesText;
 
-    [SerializeField]
-    Canvas levelPassed;
-
     private Rigidbody hostageRB;
 
     [SerializeField]
@@ -117,8 +114,8 @@ public class PlayerShooter : MonoBehaviour
 
                         if (totalEnemies == 0)
                         {
-                            levelPassed.enabled = true;
                             Time.timeScale = 0;
+                            SceneManager.LoadScene("MissionCompletedScene");
                         }
                     }
                 }
