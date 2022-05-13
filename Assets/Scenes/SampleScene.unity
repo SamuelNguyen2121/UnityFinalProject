@@ -2877,7 +2877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182109246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 84.84, z: -10}
+  m_LocalPosition: {x: 0, y: 16, z: -10}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17170,10 +17170,10 @@ MonoBehaviour:
   damageAmount: 25
   deathForce: 3
   enemiesText: {fileID: 0}
-  levelPassed: {fileID: 0}
   hostageKillAmount: 0
   muzzle: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  totalEnemies: 38
 --- !u!1 &881539092
 GameObject:
   m_ObjectHideFlags: 0
@@ -33076,10 +33076,10 @@ MonoBehaviour:
   damageAmount: 50
   deathForce: 4
   enemiesText: {fileID: 693151953}
-  levelPassed: {fileID: 918995622}
   hostageKillAmount: 1
   muzzle: {fileID: 1596104345}
   muzzleFlash: {fileID: 100000, guid: 4d1f8bf3fbf1b454ba9dbdb8afbe0882, type: 3}
+  totalEnemies: 3
 --- !u!1 &1815031599
 GameObject:
   m_ObjectHideFlags: 0
