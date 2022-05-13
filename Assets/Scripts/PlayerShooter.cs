@@ -36,25 +36,19 @@ public class PlayerShooter : MonoBehaviour
     GameObject muzzleFlash;
 
 
-    /*    [SerializeField]
-        private CapsuleCollider enemyCapsuleCollider;*/
 
-
-    [SerializeField] int totalEnemies = 38; // <--- should be 38
+    [SerializeField] int totalEnemies = 38;
 
     // Start is called before the first frame update
     void Start()
     {
         enemiesText.text = "Total Enemies " + totalEnemies;
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * 100f, Color.blue);
         Shoot();
 
     }
@@ -62,28 +56,36 @@ public class PlayerShooter : MonoBehaviour
     {
         GameObject playerMuzzle;
 
-        if (Input.GetButtonDown("Fire1") /* || Input.GetButton("Fire1")*/)//Left mouse button
+        if (Input.GetButtonDown("Fire1"))//Left mouse button
         {
+            //Raycast forward from the main camera
             Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
             playerMuzzle = Instantiate(muzzleFlash,  muzzle.position, muzzle.rotation);
             Destroy(playerMuzzle, 0.1f);
 
             RaycastHit hit;
+            //Check for collision with a raycast of 100 units
             if (Physics.Raycast(ray, out hit, 100f))
             {
-
+                //Get the "Damage" script on the enemy
                 enemy = hit.transform.GetComponent<Damage>();
+
+                //Get the Rigidbody
                 enemyRB = hit.transform.GetComponent<Rigidbody>();
+
+                //Get the "EnemyShooting" Script on the enemy
                 enemyShooting = hit.transform.GetComponent<EnemyShooting>();
 
 
-
+                //Check if the bullet hit a Hostage
                 if(hit.transform.tag == "Hostage")
                 {
 
                     hostageRB = hit.transform.gameObject.GetComponent<Rigidbody>();
+
+                    //Add force to the hostage based on where the bullet hit them
                     hostageRB.AddForceAtPosition(ray.direction * deathForce, hit.point, ForceMode.Impulse);
-                    Debug.Log("hostage hit");
+
                     hostageKillAmount -= 1;
                     if(hostageKillAmount == 0)
                     {
@@ -92,6 +94,7 @@ public class PlayerShooter : MonoBehaviour
 
                 }
 
+                //Check if the enemy has a damage script attached 
                 if (enemy != null)
                 {
 
@@ -100,6 +103,8 @@ public class PlayerShooter : MonoBehaviour
                     if(enemy.health == 0)
                     {
                         enemyRB.isKinematic = false;
+                        
+                        //Disable the enemyShooting script to stop an enemy from shooting when thhere dead
                         enemyShooting.enabled = false;
 
                         //Once helath is 0 or less it will launch the enemy based on the direction the ray hit it at
@@ -114,6 +119,7 @@ public class PlayerShooter : MonoBehaviour
 
                         if (totalEnemies == 0)
                         {
+                            //Freeze time 
                             Time.timeScale = 0;
                             SceneManager.LoadScene("MissionCompletedScene");
                         }

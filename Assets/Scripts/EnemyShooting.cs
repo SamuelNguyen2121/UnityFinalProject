@@ -40,7 +40,7 @@ public class EnemyShooting : MonoBehaviour
 
     void enemyShooting()
     {
-        Debug.DrawRay(gun.position, transform.forward * 100, Color.yellow);
+        //Debug.DrawRay(gun.position, transform.forward * 100, Color.yellow);
         Ray ray = new Ray(gun.position, transform.forward * 100);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -48,14 +48,13 @@ public class EnemyShooting : MonoBehaviour
             //if (Physics.SphereCast(ray, 5f, out hit))
             {
                 {
+
+                    //Make the enemy rotate towards the player
                     if (hit.collider.tag == "Player")
                     {
                         Vector3 targetDirection = target.position - transform.position;
 
                         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection + new Vector3(0.3f, 0, 0), speed * Time.deltaTime, 0.0f);
-
-                        // Draw a ray pointing at our player in
-                        Debug.DrawRay(transform.position, newDirection * 100, Color.red);
 
                         transform.rotation = Quaternion.LookRotation(newDirection);
 
@@ -76,6 +75,8 @@ public class EnemyShooting : MonoBehaviour
                     
                     enemyBullet = Instantiate(bullet, gun.position, gun.rotation);
                     enemyMuzzle = Instantiate(muzzleFlash, muzzle.position, muzzle.rotation);
+
+                    //Add force to the bullet
                     enemyBullet.AddForce(gun.forward * 30, ForceMode.Impulse);
 
                     Destroy(enemyBullet.gameObject, 1f);

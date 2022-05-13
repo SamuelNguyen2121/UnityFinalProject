@@ -38,9 +38,4 @@ public class TimerScript : MonoBehaviour
         SceneManager.LoadScene("GameOverScene");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

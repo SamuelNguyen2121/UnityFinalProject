@@ -12,28 +12,15 @@ public class SettingsScript : MonoBehaviour
     [SerializeField]
     private Slider FOVSlider;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeSensitivity()
     {
+        //Change the mouse sensitivity based on the value from the slider
         MouseLook.sensitivity = sensitivitySlider.value;
-
-        //PlayerPrefs.SetFloat("Sensitivity", sensitivitySlider.value);
-        //MouseLook.sensitivity = PlayerPrefs.GetFloat("Sensitivity");
     }
 
     public void ChangeFOV()
     {
+        //Change the main cameras fov based on the value from the slider
         Camera.main.fieldOfView = FOVSlider.value;
     }
 

@@ -17,9 +17,14 @@ public class StartScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
+
+            //Quit the game
             Application.Quit();
         }
     }
+
+    //Methods to load all the scenes
+
 
     public void LoadShootingRange()
     {
@@ -48,7 +53,6 @@ public class StartScript : MonoBehaviour
 
     public void QuitGame()
     {
-       // UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

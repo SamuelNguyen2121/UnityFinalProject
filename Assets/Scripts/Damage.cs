@@ -10,11 +10,6 @@ public class Damage : MonoBehaviour
 
     public Ray rayShot;
 
-    private bool isEnemyDead;
-
-
-
-
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,7 +18,7 @@ public class Damage : MonoBehaviour
     }
     public void enemyDamage(float damage)
     {
-
+        //Reduce the enemy health
         health -= damage;
 
     }

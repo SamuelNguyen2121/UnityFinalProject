@@ -11,9 +11,9 @@ public class bulletCollision : MonoBehaviour
     [SerializeReference]
    public playerHealth PlayerHealth;
 
-    // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     { 
+        //Destroy the bullet
         Destroy(gameObject);
     }
 }

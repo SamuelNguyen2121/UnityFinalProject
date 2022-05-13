@@ -27,10 +27,12 @@ public class SoundSettings : MonoBehaviour
     {
         if (mute.GetComponent<Toggle>().isOn)
         {
+            //Mute 
             AudioListener.volume = 0;
         }
         else
         {
+            //Change the value
             AudioListener.volume = volumeSlider.value;
         }
     }

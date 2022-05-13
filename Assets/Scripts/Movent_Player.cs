@@ -14,7 +14,6 @@ public class Movent_Player : MonoBehaviour
     [SerializeField]
     private float jumpHeight;
 
-    private Vector3 velocity;
     [SerializeField]
     private Camera characterCam;
     bool onGround = true;
@@ -27,7 +26,6 @@ public class Movent_Player : MonoBehaviour
     [SerializeField]
     private Collider playerCollider;
 
-    PlayerShooter shooter;
     private Transform initialTransform;
 
     // Start is called before the first frame update
@@ -47,55 +45,14 @@ public class Movent_Player : MonoBehaviour
         var inputY = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector3(inputX, 0, inputY)  * Time.deltaTime * movementSpeed);
+        
+        //Check if the player moving forward than allow the run method to work
         if(inputY > 0) 
         {
             Run();
 
         }
-
-
-        Debug.DrawRay(characterCam.transform.position, new Vector3(0f,-0.2f,0f),Color.yellow);
-
-
-        /*if (Input.GetKey(KeyCode.A))
-        {
-            controller.Move(-transform.right * movementSpeed * Time.deltaTime);
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            controller.Move(transform.right * movementSpeed * Time.deltaTime);
-
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            controller.Move(transform.forward * movementSpeed * Time.deltaTime);
-            Run();
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            controller.Move(-transform.forward * movementSpeed * Time.deltaTime);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-           transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }*/
-
         Jump();
-
-      //  velocity.y += gravityPull * Time.deltaTime;
-       // controller.Move(velocity * Time.deltaTime);
-
-
-       
-
-
 
     }
 

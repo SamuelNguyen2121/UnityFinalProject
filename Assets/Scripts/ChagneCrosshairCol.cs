@@ -14,7 +14,7 @@ public class ChagneCrosshairCol : MonoBehaviour
 
     public void ChangeCrosshairColor()
     {
+        //Change the color
        crossHair.GetComponent<Image>().color = crosshairColor;
-        Debug.Log(crosshairColor);
     }
 }

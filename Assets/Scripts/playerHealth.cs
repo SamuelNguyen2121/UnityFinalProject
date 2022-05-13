@@ -12,7 +12,6 @@ public class playerHealth : MonoBehaviour
 
     [SerializeField]
     Text healthOfPlayer;
-    // Start is called before the first frame update
 
     private void Start()
     {
@@ -26,13 +25,14 @@ public class playerHealth : MonoBehaviour
         {
             if (other.transform.gameObject.tag == "enemyBullet")
             {
+            //Decrease helath if a bullet hit
                 health -= 25;
                 healthOfPlayer.text = health.ToString();
 
                 if (health == 0)
                 {
-                    Debug.Log("Dead");
                     Time.timeScale = 0;
+
                     healthOfPlayer.color = Color.red;
                 SceneManager.LoadScene("GameOverScene"); 
                 }

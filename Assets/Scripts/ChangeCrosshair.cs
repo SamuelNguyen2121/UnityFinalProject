@@ -11,9 +11,9 @@ public class ChangeCrosshair : MonoBehaviour
     [SerializeField]
     Sprite newCrosshair;
 
-    // Start is called before the first frame update
     public void OnMouseDown()
     {
+        //Change the crosshair to the one selected
         currentCrosshair.GetComponent<Image>().sprite = newCrosshair;
     }
 
